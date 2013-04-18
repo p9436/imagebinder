@@ -6,7 +6,7 @@ module ActsAsImagebinder
       has_one association_name,
               :as => :assetable,
               :dependent => :destroy,
-              :class_name => 'Imgbinder',
+              :class_name => 'Imagebinder::Imgbinder',
               :conditions => {:association_type => association_name}
 
       accepts_nested_attributes_for association_name, :allow_destroy => true
@@ -24,7 +24,7 @@ module ActsAsImagebinder
         if [1, '1', true, 'true'].include? params['_destroy']
           self.cover = nil
         else
-          eval("self.#{association_name} = Imgbinder.find_by_id(params['id'])")
+          eval("self.#{association_name} = Imagebinder::Imgbinder.find_by_id(params['id'])")
         end
       end
 

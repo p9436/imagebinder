@@ -1,0 +1,25 @@
+%div{:style => 'display:none'}
+  %div.upload-asset-box{:id => "#{box_id}"}
+    %div.wrapper
+      - if description
+        .description= raw description
+      .files
+        = form_for object.send('build_'+asset_type.to_s), :as => 'asset', :url => imagebinders_path, :html => { :id => "upload_#{box_id}"}, :multipart => true do |f|
+          = f.hidden_field :assetable_type
+          = f.hidden_field :association_type
+          
+          - f.object.asset_field = asset_field
+          = f.hidden_field :asset_field
+
+          = f.file_field :image, :class => :'upload-file-field'
+      .upload_progress{:style => 'display:none'}
+        .info
+        .bar
+          .p
+      .controls
+        .cancel= link_to 'Cancel', '#', :class => :'upload-cancel-button'
+
+:javascript
+  $(function() {
+    $("#link_to_#{box_id}").fancybox({modal:true});
+  });

@@ -1,0 +1,16 @@
+<li class="icon-label"><%= field_label %></li>
+<li class="icon">
+  <div class="asset <%=asset_field %>_<%=f.object.association_type.to_s %>">
+    <div class="<%=asset_field%>_<%=f.object.association_type.to_s%>_image">
+      <%= image_tag f.object.image.url(style) %>
+    </div>
+    <%= f.hidden_field :_destroy %>
+    <%= f.hidden_field :id  unless f.object.persisted? %>
+    <div class="controls">
+      <span class="remove" style="<%= (f.object.persisted? && f.object.image?) ? '' : 'display:none' %>">
+        <%= ctrl_remove object, f.object.association_type, asset_field %>
+      </span>
+      <span class="upload"><%=ctrl_upload object, f.object.association_type, asset_field %></span>
+    </div>
+  </div>
+</li>
