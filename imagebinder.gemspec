@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Vadym Lukavyy"]
   s.email       = ["vadym@masterofcode.com"]
   s.homepage    = ""
-  s.summary     = %q{}
-  s.description = %q{}
+  s.summary     = ""
+  s.description = ""
 
   s.rubyforge_project = "imagebinder"
 
