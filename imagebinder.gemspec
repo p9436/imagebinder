@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Vadym Lukavyy"]
   s.email       = ["vadym@masterofcode.com"]
   s.homepage    = ""
-  s.summary     = ""
-  s.description = ""
+  s.summary     = %q{Write a gem summary}
+  s.description = %q{Write a gem description}
 
   s.rubyforge_project = "imagebinder"
 
@@ -17,6 +17,12 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+
+  s.add_dependency 'jquery-ui-rails'
+  s.add_dependency 'jcrop-rails', '~>1.0.2'
+  s.add_dependency 'fancybox2-rails', '~> 0.2.4'
+  s.add_dependency 'jquery-fileupload-rails'
 
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
