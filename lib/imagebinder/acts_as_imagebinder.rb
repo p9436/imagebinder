@@ -3,11 +3,10 @@ module ActsAsImagebinder
 
     def acts_as_imagebinder association_name, *args
 
-      has_one association_name,
-              :as => :assetable,
-              :dependent => :destroy,
-              :class_name => 'Imagebinder::Imgbinder',
-              :conditions => {:association_type => association_name}
+      has_one association_name, -> { where association_type: association_name},
+              as: :assetable,
+              dependent: :destroy,
+              class_name: 'Imagebinder::Imgbinder'
 
       accepts_nested_attributes_for association_name, :allow_destroy => true
 

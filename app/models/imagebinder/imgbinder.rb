@@ -17,14 +17,14 @@ module Imagebinder
   class Imgbinder < ActiveRecord::Base
 
     self.table_name = "imagebinder"
-    
+
     belongs_to :assetable, :polymorphic => true
 
-    attr_accessible :assetable_type, :association_type, :asset_field, :image, :crop_x, :crop_y, :crop_w, :crop_h
+    # attr_accessible :assetable_type, :association_type, :asset_field, :image, :crop_x, :crop_y, :crop_w, :crop_h
 
 
     attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :asset_field
-    
+
     after_update :reprocess_image, :if => :cropping?
 
     def cropping?
@@ -46,6 +46,9 @@ module Imagebinder
                       :styles      => lambda{ |a| a.instance.assetable_type.constantize.send("#{a.instance.association_type}_styles").merge(a.instance.default_asset_style) },
                       :processors  => [:cropper]
 
+
+
+    validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
     def image_geometry(style = :original)
       @geometry ||= {}

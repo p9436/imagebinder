@@ -3,7 +3,7 @@ module Imagebinder
 
     def ctrl_upload object, asset_type, asset_field=nil
       asset_field = asset_field || object.class.to_s.underscore
-      link_to('Change', "#" << html_id(asset_field, asset_type), 
+      link_to('Change', "#" << html_id(asset_field, asset_type),
               :id => "link_to_" << html_id(asset_field,asset_type),
               :class => :'delete-btn'
              )
@@ -11,8 +11,8 @@ module Imagebinder
 
     def ctrl_remove object, asset_type, asset_field=nil
       asset_field = asset_field || object.class.to_s.underscore
-      link_to_function('Remove', "if (confirm('Do you really want to do this?')) asset_remove('#{html_id(asset_field, asset_type)}',
-                       '/assets/default/#{object.class.to_s.underscore}_#{asset_type}_thumb.png' )", 
+      link_to('Remove', '#', click: "if (confirm('Do you really want to do this?')) asset_remove('#{html_id(asset_field, asset_type)}',
+                       '/assets/default/#{object.class.to_s.underscore}_#{asset_type}_thumb.png' ); return false",
                        :id => "remove_asset_" << html_id(asset_field,asset_type),
                        :class => :'delete-btn'
                       )
@@ -57,9 +57,9 @@ module Imagebinder
     end
 
     def upload_image_form object, asset_type, description = '', asset_field=''
-      render 'imagebinder/upload_asset', :object => object.class.new, 
-                                         :asset_type => asset_type, 
-                                         :box_id => html_id(asset_field, asset_type), 
+      render 'imagebinder/upload_asset', :object => object.class.new,
+                                         :asset_type => asset_type,
+                                         :box_id => html_id(asset_field, asset_type),
                                          :description => description,
                                          :asset_field => asset_field
     end

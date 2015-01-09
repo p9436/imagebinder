@@ -1,0 +1,31 @@
+<div style="display:none">
+  <div class="upload-asset-box" id="<%= box_id %>">
+    <div class="wrapper">
+      <% if description %>
+        <div class="description">
+          <%= raw description %>
+        </div>
+      <% end %>
+      <div class="files">
+        <%= form_for object.send('build_'+asset_type.to_s), :as => 'asset', :url => imagebinders_path, :html => { :id => "upload_#{box_id}"}, :multipart => true do |f| %>
+          <%= f.hidden_field :assetable_type %>
+          <%= f.hidden_field :association_type %>
+          <% f.object.asset_field = asset_field %>
+          <%= f.hidden_field :asset_field %>
+          <%= f.file_field :image, :class => :'upload-file-field' %>
+        <% end %>
+      </div>
+      <div class="upload_progress" style="display:none">
+        <div class="info"></div>
+        <div class="bar">
+          <div class="p"></div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="cancel">
+          <%= link_to 'Cancel', '#', :class => :'upload-cancel-button' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
