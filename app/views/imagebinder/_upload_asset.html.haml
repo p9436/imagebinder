@@ -7,7 +7,7 @@
         = form_for object.send('build_'+asset_type.to_s), :as => 'asset', :url => imagebinders_path, :html => { :id => "upload_#{box_id}"}, :multipart => true do |f|
           = f.hidden_field :assetable_type
           = f.hidden_field :association_type
-          
+
           - f.object.asset_field = asset_field
           = f.hidden_field :asset_field
 
@@ -19,7 +19,3 @@
       .controls
         .cancel= link_to 'Cancel', '#', :class => :'upload-cancel-button'
 
-:javascript
-  $(function() {
-    $("#link_to_#{box_id}").fancybox({modal:true});
-  });

@@ -40,7 +40,7 @@ module Imagebinder
 
     has_attached_file :image,
                       :hash_secret => "9395e554cfe2f988ddadc1085d636bd18d517d13",
-                      :path        => lambda{ |a| ":rails_root/public/system/asset/:id/:style.:extension"},
+                      :path        => lambda{ |a| ":rails_root/public/system/imagebinder/:id/:style.:extension"},
                       :url         => :path_to_file,
                       :default_url => lambda{ |a| "/assets/default/#{a.instance.assetable_type.to_s.downcase}_#{a.instance.association_type}_:style.png"},
                       :styles      => lambda{ |a| a.instance.assetable_type.constantize.send("#{a.instance.association_type}_styles").merge(a.instance.default_asset_style) },
@@ -60,7 +60,7 @@ module Imagebinder
     end
 
     def path_to_file
-      "/system/asset/:id/:style.:extension"
+      "/system/imagebinder/:id/:style.:extension"
     end
 
   end

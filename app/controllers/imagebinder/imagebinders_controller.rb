@@ -4,16 +4,21 @@ module Imagebinder
       object = params[:asset][:assetable_type].constantize.new
       asset = object.send('build_' << params[:asset][:association_type], params[:asset])
       ratio = eval("#{asset.assetable_type}.#{asset.association_type}_ratio")
-
       if asset.save
-        render :json => { :id => asset.id, :url => crop_imagebinder_url(asset), :crop_ratio => ratio }
+        # render :json => { :id => asset.id, :url => crop_imagebinder_url(asset), :crop_ratio => ratio }
+        # patch for ie9
+        render :text => { :id => asset.id, :url => crop_imagebinder_url(asset, :asset_field => params[:asset][:asset_field]), :crop_ratio => ratio,  }.to_json
       else
-        render :json => asset.error_messages
+        render :text => asset.error_messages.to_json
       end
     end
 
+
+
+
     def crop
-      @asset = Imgbinder.find params[:id]
+      @asset = Imgbinder.find_by_id params[:id]
+      @asset.asset_field = params[:asset_field]
       render 'imagebinder/crop', :layout => false
     end
 

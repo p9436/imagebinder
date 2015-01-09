@@ -11,8 +11,8 @@ module Imagebinder
 
     def ctrl_remove object, asset_type, asset_field=nil
       asset_field = asset_field || object.class.to_s.underscore
-      link_to_function('Remove', "if (confirm('Do you really want to do this?')) asset_remove('#{html_id(object.class.to_s.underscore, asset_type)}',
-                       '/assets/default/#{asset_field}_#{asset_type}_thumb.png' )", 
+      link_to_function('Remove', "if (confirm('Do you really want to do this?')) asset_remove('#{html_id(asset_field, asset_type)}',
+                       '/assets/default/#{object.class.to_s.underscore}_#{asset_type}_thumb.png' )", 
                        :id => "remove_asset_" << html_id(asset_field,asset_type),
                        :class => :'delete-btn'
                       )
@@ -41,6 +41,7 @@ module Imagebinder
         $(function() {
           $('.asset.#{html_id(asset_field, asset_type)}').closest('form').after("#{escape_javascript(upload_form)}");
           asset_upload_init($('##{html_id(asset_field, asset_type)}'));
+          $("#link_to_#{html_id(asset_field, asset_type)}").fancybox({modal:true});
         });
       jsinitcode
       r << js

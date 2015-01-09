@@ -1,5 +1,5 @@
 %div.upload-asset-box-crop
-  = form_for @asset, :as => :asset, :url => imagebinder_path(@asset), :class => :edit_asset, :remote => true do |f|
+  = form_for @asset, :as => :asset, :url => imagebinder_path(@asset), :html => {:class => :imagebinder_crop}, :remote => true do |f|
 
 
     - if @asset.image_geometry(:original).width > @asset.image_geometry(:original).height
@@ -32,11 +32,11 @@
   preview_ratio = #{@ratio.nil? ? 1 : @ratio };
   original_image_ratio = #{@orig_img_ratio };
   $(function() {
-    $('.edit_asset')
+    $('.imagebinder_crop, .asset_edit')
       .bind('ajax:beforeSend', function(xhr, settings) {})
       .bind('ajax:success',    function(data, status, xhr) {
-        // console.log('success', status);
-        // console.log('-', status.target+'_attributes_id', status.id);
+        console.log('success', status);
+        console.log('-', status.target+'_attributes_id', status.id);
         $('#'+status.target+'_attributes_id').val(status.id);
         $('.'+status.target+'_image').html('<img src="'+status.image+'"/>');
         $('.asset.'+status.target+' .remove').show();
