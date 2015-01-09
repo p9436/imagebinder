@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
 
   s.add_dependency 'jquery-ui-rails'
-  s.add_dependency 'jcrop-rails', '~>1.0.2'
+  # s.add_dependency 'jcrop-rails'
   s.add_dependency 'fancybox2-rails', '~> 0.2.4'
   s.add_dependency 'jquery-fileupload-rails'
 
