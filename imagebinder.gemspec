@@ -18,11 +18,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-
-  s.add_dependency 'jquery-ui-rails'
-  # s.add_dependency 'jcrop-rails'
-  # s.add_dependency 'fancybox2-rails', '~> 0.2.4'
   s.add_dependency 'jquery-fileupload-rails'
+  s.add_dependency 'fancybox2-rails', '~> 0.2.8'
 
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"

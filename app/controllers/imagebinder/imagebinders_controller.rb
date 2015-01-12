@@ -1,7 +1,6 @@
 module Imagebinder
   class ImagebindersController < ApplicationController
     def create
-      ap asset_attributes
       object = asset_attributes['assetable_type'].constantize.new
       asset = object.send('build_' << asset_attributes['association_type'], asset_attributes)
       ratio = eval("#{asset.assetable_type}.#{asset.association_type}_ratio")

@@ -23,10 +23,10 @@
     <% end %>
     <div class="controls">
       <div class="done">
-        <%= link_to 'Done', '#', click: "$(this).closest('form').submit(); return false;" %>
+        <%= link_to 'Done', '#', onclick: "$(this).closest('form').submit(); return false;" %>
       </div>
       <div class="cancel">
-        <%= link_to 'Cancel', '#', click: '$.fancybox.close(); return false;' %>
+        <%= link_to 'Cancel', '#', onclick: '$.fancybox.close(); return false;' %>
       </div>
     </div>
   <% end %>

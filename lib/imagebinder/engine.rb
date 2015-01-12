@@ -6,6 +6,7 @@ require 'action_controller'
 
 module Imagebinder
   class Engine < Rails::Engine
+    # require ...
     # config.autoload_paths << File.expand_path("../lib/some/path", __FILE__)
   end
 end
