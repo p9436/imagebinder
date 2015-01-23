@@ -42,7 +42,7 @@ module Imagebinder
                       :hash_secret => "9395e554cfe2f988ddadc1085d636bd18d517d13",
                       :path        => lambda{ |a| ":rails_root/public/system/imagebinder/:id/:style.:extension"},
                       :url         => :path_to_file,
-                      :default_url => lambda{ |a| "/assets/default/#{a.instance.assetable_type.to_s.downcase}_#{a.instance.association_type}_:style.png"},
+                      :default_url => lambda{ |a| "#{a.instance.assetable_type.to_s.downcase}_#{a.instance.association_type}_:style.png"},
                       :styles      => lambda{ |a| a.instance.assetable_type.constantize.send("#{a.instance.association_type}_styles").merge(a.instance.default_asset_style) },
                       :processors  => [:cropper]
 
