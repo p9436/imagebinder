@@ -9,7 +9,7 @@ module Imagebinder
         # patch for ie9
         render :text => { :id => asset.id, :url => crop_imagebinder_url(asset, :asset_field => asset_attributes[:asset_field]), :crop_ratio => ratio,  }.to_json
       else
-        render :text => asset.error_messages.to_json
+        render :text => asset.errors.full_messages.to_json
       end
     end
 
