@@ -40,15 +40,19 @@
     $('.imagebinder_crop, .asset_edit')
             .bind('ajax:beforeSend', function(xhr, settings) {})
             .bind('ajax:success',    function(data, status, xhr) {
-              console.log('success', status);
-              console.log('-', status.target+'_attributes_id', status.id);
+              // console.log('success', status);
+              // console.log('-', status.target+'_attributes_id', status.id);
               $('#'+status.target+'_attributes_id').val(status.id);
               $('.'+status.target+'_image').html('<img src="'+status.image+'"/>');
               $('.asset.'+status.target+' .remove').show();
               $.fancybox.close();
             })
-            .bind('ajax:complete', function(xhr, status) { console.log('complete', status) })
-            .bind('ajax:error', function(xhr, status, error) { console.log('error', status, error) })
+            .bind('ajax:complete', function(xhr, status) {
+              // console.log('complete', status)
+            })
+            .bind('ajax:error', function(xhr, status, error) {
+              // console.log('error', status, error)
+            })
   });
 
 
