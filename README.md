@@ -8,7 +8,7 @@ add required gems to Gemfile
     gem 'fancybox2-rails', '~> 0.2.8'
     gem 'jquery-fileupload-rails'
     gem 'paperclip', '~> 4.2'
-    gem 'imagebinder', git: 'git@github.com:vvstadnyk/imagebinder.git'
+    gem 'imagebinder', git: 'git@github.com:p9436/imagebinder.git'
 
 application.js
 
