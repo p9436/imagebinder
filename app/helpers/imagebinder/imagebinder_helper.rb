@@ -12,7 +12,7 @@ module Imagebinder
     def ctrl_remove object, asset_type, asset_field=nil
       asset_field = asset_field || object.class.to_s.underscore
       link_to('Remove', '#', onclick: "if (confirm('Do you really want to do this?')) asset_remove('#{html_id(asset_field, asset_type)}',
-                       '/assets/default/#{object.class.to_s.underscore}_#{asset_type}_thumb.png' ); return false",
+                       '/assets#{object.class.to_s.underscore}_#{asset_type}_thumb.png' ); return false",
                        :id => "remove_asset_" << html_id(asset_field,asset_type),
                        :class => :'delete-btn'
                       )
