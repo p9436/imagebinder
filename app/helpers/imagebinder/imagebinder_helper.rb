@@ -44,7 +44,15 @@ module Imagebinder
           $("#link_to_#{html_id(asset_field, asset_type)}").fancybox({modal:true});
         });
       jsinitcode
-      r << js
+
+      if defined?(ActiveAdmin::Views::FormtasticProxy) && form.is_a?(ActiveAdmin::Views::FormtasticProxy)
+        form.inputs class: 'hide' do
+          js.html_safe
+        end
+      else
+        r << js
+      end
+
     end
 
 
