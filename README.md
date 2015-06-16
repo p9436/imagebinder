@@ -24,7 +24,8 @@ application.css.scss
 in class
 
     class Brand < ActiveRecord::Base
-      acts_as_imagebinder :picture, :styles => { :thumb => "110x110#", :small => "64x64#" }, ratio: false
+      acts_as_imagebinder :picture, :styles => { :thumb => "110x110#", :small => "64x64#" }, ratio: false    # free ratio for crop
+      acts_as_imagebinder :picture, :styles => { :thumb => "640x480#", :small => "64x64#" }, ratio: 4/3.to_f # crop for 4x3 ratio
     end
 
 in view
