@@ -17,6 +17,11 @@ application.js
 application.css.scss
 
      *= require imagebinder
+
+...and don't forget about
+
+     $ rails generate imagebinder
+
      
 ----     
 ## usage
